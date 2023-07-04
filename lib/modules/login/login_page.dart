@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:spayce/shared/themes/app_colors.dart';
 import 'package:spayce/shared/themes/app_images.dart';
 import 'package:spayce/shared/themes/app_data_styles.dart';
 import 'package:spayce/shared/widgets/social_login/social_login_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,48 +23,52 @@ class _LoginPageState extends State<LoginPage> {
       body: SizedBox(
         width: size.width,
         height: size.height,
-        child: Stack(
-          children: [
-            Container(
-              width: size.width, 
-              height: size.height*0.39,
-              color: AppColors.primary,
-            ),
-            Positioned(
+        child: Stack(children: [
+          Container(
+            width: size.width,
+            height: size.height * 0.39,
+            color: AppColors.primary,
+          ),
+          Positioned(
               top: -70,
-              left: 10, 
-              right: 0, 
-              child: Image.asset(AppImages.personn)
-            ),
-            Positioned(
-              bottom: size.height*0.04,
-              left: 0,
+              left: 10,
               right: 0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(AppImages.logoMini),
-                  Padding(
-                    padding: const EdgeInsets.only(top:24, left:70, right: 70),
-                    child: Text("Organize seus boletos em um só lugar", 
-                    textAlign: TextAlign.center,
-                    style: TextStyles.titleHome),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 40, 
-                      right: 40, 
-                      top: 40),
-                    child: SocialLoginButton(onTap: () { 
-
-                     },),
-                  ),
-                ],
-              ),
-            )
-          ]
-        ),
+              child: Image.asset(AppImages.personn)),
+          Positioned(
+            bottom: size.height * 0.04,
+            left: 0,
+            right: 0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(AppImages.logoMini),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24, left: 70, right: 70),
+                  child: Text("Organize seus boletos em um só lugar",
+                      textAlign: TextAlign.center, style: TextStyles.titleHome),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40, right: 40, top: 40),
+                  child: SocialLoginButton(
+                    onTap: () async {
+                    GoogleSignIn googleSignIn = GoogleSignIn(
+                      scopes: [
+                        'email',
+                      ],
+                    );
+                    try {
+                      final response = await googleSignIn.signIn();
+                      print(response);
+                    } catch (error) {
+                      print(error);
+                    }
+                  }),
+                ),
+              ],
+            ),
+          )
+        ]),
       ),
     );
   }

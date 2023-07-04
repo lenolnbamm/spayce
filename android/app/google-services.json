@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "499574055074",
+    "project_id": "spayce-f759b",
+    "storage_bucket": "spayce-f759b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499574055074:android:2ae613a1a7e75a02dd77fb",
+        "android_client_info": {
+          "package_name": "com.example.spayce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499574055074-j10i5bjd7d7tar741mnbc4negf79chur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spayce",
+            "certificate_hash": "5f1c6f1f981d3c9967caf546fd14d3a3304724b2"
+          }
+        },
+        {
+          "client_id": "499574055074-a0eqds46hrf1igorf30rf5sma0ha68vn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUOIRc-_2kdapyQpLKeO5uPq9uk_EGsjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499574055074-a0eqds46hrf1igorf30rf5sma0ha68vn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
