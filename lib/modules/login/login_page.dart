@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:spayce/modules/login/login_controller.dart';
 import 'package:spayce/shared/themes/app_colors.dart';
 import 'package:spayce/shared/themes/app_images.dart';
 import 'package:spayce/shared/themes/app_data_styles.dart';
 import 'package:spayce/shared/widgets/social_login/social_login_button.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final controller = LoginController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -50,19 +51,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 40, right: 40, top: 40),
-                  child: SocialLoginButton(
-                    onTap: () async {
-                    GoogleSignIn googleSignIn = GoogleSignIn(
-                      scopes: [
-                        'email',
-                      ],
-                    );
-                    try {
-                      final response = await googleSignIn.signIn();
-                      print(response);
-                    } catch (error) {
-                      print(error);
-                    }
+                  child: SocialLoginButton(onTap: () {
+                    controller.googleSignIn(context);
                   }),
                 ),
               ],
